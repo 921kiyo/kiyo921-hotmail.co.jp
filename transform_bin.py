@@ -88,16 +88,12 @@ def plot_running_avg(totalrewards):
   plt.show()
 
 if __name__ == "__main__":
-    # env = gym.make("CartPole-v0")
-    env = gym.make("Pendulum-v0")
+    env = gym.make("CartPole-v0")
+    # env = gym.make("Pendulum-v0")
     import pdb
     pdb.set_trace()
     env = wrappers.Monitor(env, "record", force=True)
 
-    # if 'monitor' in sys.argv:
-    #     filename = os.path.basename(__file__).split('.')[0]
-    # monitor_dir = './' + filename + '_' + str(datetime.now())
-    # env = wrappers.Monitor(env, monitor_dir)
     tf = Transformer()
 
     model = Model(env, tf)
