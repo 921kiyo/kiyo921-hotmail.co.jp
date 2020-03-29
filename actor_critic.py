@@ -13,9 +13,6 @@ from torch.autograd import Variable
 
 from collections import deque
 
-env = gym.make("CartPole-v0")
-# env = wrappers.Monitor(env, "ac", force=True)
-env.seed(0)
 
 # from reinforce import Policy as PolicyModel
 class PolicyModel(nn.Module):
@@ -55,14 +52,18 @@ class ValueModel(nn.Module):
         return value
 
 
-policy = PolicyModel()
-critic = ValueModel()
-value_model = ValueModel()
-actor_optimizer = optim.Adam(policy.parameters(), lr=1e-2)
-critic_optimizer = optim.Adam(critic.parameters(), lr=1e-2)
 
 
 def actor_critic(n_episodes=1000, max_time=1000, gamma=1.0, print_every=100):
+    env = gym.make("CartPole-v0")
+    # env = wrappers.Monitor(env, "ac", force=True)
+    env.seed(0)
+    policy = PolicyModel()
+    critic = ValueModel()
+    value_model = ValueModel()
+    actor_optimizer = optim.Adam(policy.parameters(), lr=1e-2)
+    critic_optimizer = optim.Adam(critic.parameters(), lr=1e-2)
+
     scores_deque = deque(maxlen=100)
     scores = []
     for episode in range(1, n_episodes + 1):
