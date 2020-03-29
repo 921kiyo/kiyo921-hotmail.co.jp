@@ -70,5 +70,3 @@ def reinforce(n_episodes=1000, max_time=1000, gamma=1.0, print_every=100):
             )
             # break
     return scores
-
-

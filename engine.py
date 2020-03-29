@@ -6,8 +6,8 @@ from actor_critic import actor_critic
 import numpy as np
 
 
-result = actor_critic()
-# result = reinforce(n_episodes=5000)
+# result = actor_critic()
+result = reinforce(n_episodes=3000)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
