@@ -54,7 +54,7 @@ class ValueModel(nn.Module):
 
 
 
-def actor_critic(n_episodes=1000, max_time=1000, gamma=1.0, print_every=100):
+def actor_critic(n_episodes=1000, max_time=1000, gamma=1.0, print_every=1000):
     env = gym.make("CartPole-v0")
     # env = wrappers.Monitor(env, "ac", force=True)
     env.seed(0)
@@ -140,11 +140,11 @@ def actor_critic(n_episodes=1000, max_time=1000, gamma=1.0, print_every=100):
                     episode, np.mean(scores_deque)
                 )
             )
-        if np.mean(scores_deque) >= 195.0:
-            print(
-                "Environment solved in {:d} episodes!\tAverage Score: {:.2f}".format(
-                    episode - 100, np.mean(scores_deque)
-                )
-            )
+        # if np.mean(scores_deque) >= 195.0:
+        #     print(
+        #         "Environment solved in {:d} episodes!\tAverage Score: {:.2f}".format(
+        #             episode - 100, np.mean(scores_deque)
+        #         )
+        #     )
             # break
     return scores

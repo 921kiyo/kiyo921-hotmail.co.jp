@@ -8,13 +8,12 @@ import numpy as np
 
 results = []
 for i in range(10):
-    result = actor_critic(n_episodes=5000)
-    # result = reinforce(n_episodes=3000)
-
+    result = actor_critic(n_episodes=10000)
+    # result = reinforce(n_episodes=10000)
     results.append(result)
 
 avg = [float(sum(l))/len(l) for l in zip(*results)]
-
+# avg = result
 import pdb
 # pdb.set_trace()
 fig = plt.figure()
